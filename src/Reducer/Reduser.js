@@ -4,7 +4,7 @@ const inititalState = {
     btnPlus: "Plus",
     btnMinus: "Minus",
     btnPlusTwo: "Plus Two",
-    btnMultiplateTwo: "Duble",
+    btnMultiplateTwo: "Redouble",
     btnDivideTwo: "Divide Two"
 };
 const reducer = (state = inititalState, action) =>{
