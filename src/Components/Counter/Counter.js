@@ -1,30 +1,54 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { INC, DEC, plustwo, zero, multiplatetwo, dividetwo } from '../../Actions/Actions'
 
-const Counter = ({ count, btnZero, btnPlus, btnMinus, btnPlusTwo, btnMultiplateTwo, btnDivideTwo }) => {
+const Counter = ({ count, INC, DEC, plustwo, zero, multiplatetwo, dividetwo }) => {
     return(
         <React.Fragment>
-            <div id="count" class="btn">{count}</div>
-            <button id="plus" class="btn btn-outline-success">{btnPlus}</button>
-            <button id="minus" class="btn btn-outline-danger">{btnMinus}</button>
-            <button id="plustwo" class="btn btn-outline-info">{btnPlusTwo}</button>
-            <button id="zero" class="btn btn-outline-info">{btnZero}</button>
-            <button id="multiplatetwo" class="btn btn-outline-info">{btnMultiplateTwo}</button>
-            <button id="dividetwo" class="btn btn-outline-info">{btnDivideTwo}</button>
+            <div id="count" className="btn">{count}</div>
+            <button id="plus" onClick={INC} className="btn btn-outline-success">Plus</button>
+            <button id="minus" onClick={DEC} className="btn btn-outline-danger">Minus</button>
+            <button id="plustwo" onClick={plustwo} className="btn btn-outline-info">Plus Two</button>
+            <button id="zero" onClick={zero} className="btn btn-outline-info">Zero</button>
+            <button id="multiplatetwo" onClick={multiplatetwo} className="btn btn-outline-info">Redouble</button>
+            <button id="dividetwo" onClick={dividetwo} className="btn btn-outline-info">Divide Two</button>
         </React.Fragment>
     )
 }
 
-const mapStateToProps = ({ count, btnZero, btnPlus, btnMinus, btnPlusTwo, btnMultiplateTwo, btnDivideTwo}) => {
+const mapStateToProps = (state) => {
     return {
-        count: count,
-        btnZero: btnZero,
-        btnPlus: btnPlus,
-        btnPlusTwo: btnPlusTwo,
-        btnMinus: btnMinus,
-        btnMultiplateTwo: btnMultiplateTwo,
-        btnDivideTwo: btnDivideTwo,
+        count: state
     }
 }
 
-export default connect (mapStateToProps)(Counter);
+const mapDispatchToProps = dispatch => {
+    return {
+        INC: () => {
+            const count = 1;
+            dispatch(INC(count));
+        },
+        DEC: () => {
+            const count = 1;
+            dispatch(DEC(count));
+        },
+        zero: () => {
+            const zeroCounter = 0;
+            dispatch(zero(zeroCounter));
+        },
+        plustwo: () => {
+            const count = 2;
+            dispatch(plustwo(count))
+        },
+        multiplatetwo: () => {
+            const count = 2;
+            dispatch(multiplatetwo(count));
+        },
+        dividetwo: () => {
+            const count = 2;
+            dispatch(dividetwo(count));
+        },
+    }
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(Counter);

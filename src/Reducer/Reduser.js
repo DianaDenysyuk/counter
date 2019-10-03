@@ -1,26 +1,20 @@
 const inititalState = {
-    count: 0,
-    btnZero: "Zero",
-    btnPlus: "Plus",
-    btnMinus: "Minus",
-    btnPlusTwo: "Plus Two",
-    btnMultiplateTwo: "Redouble",
-    btnDivideTwo: "Divide Two"
+    count: 0
 };
-const reducer = (state = inititalState, action) =>{
+const reducer = (state = inititalState.count, action) =>{
     switch (action.type) {
         case "INC":
-            return state.count + action.inc;
+            return state + action.payload;
         case "DEC":
-            return state.count - action.dec;
+            return state - action.payload;
         case "plustwo":
-            return state.count + action.plustwo;
+            return state + action.payload;
         case "zero":
-            return state.count = action.zero;
+            return state = action.payload;
         case "multiplatetwo":
-            return state.count * action.multiplatetwo;
+            return state * action.payload;
         case "dividetwo":
-            return state.count / action.dividetwo;
+            return state / action.payload;
         default:
             return state
     }
